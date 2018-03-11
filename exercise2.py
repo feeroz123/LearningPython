@@ -1,7 +1,7 @@
 # Python function that takes a sequence of numbers and determines if all the numbers are different from each other
 
 def checknumbers(data):
-    print(data)
+    print("Submitted series: ", data)
     for i in data:
         count = 0
         for j in range(0, len(data)):
@@ -14,4 +14,4 @@ def checknumbers(data):
 
 
 print(checknumbers([2, 8, 3, 7]))
-print(checknumbers([2, 8, 8, 7]))
+print(checknumbers([2, 8, 9, 7]))
