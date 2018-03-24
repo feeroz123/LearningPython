@@ -7,8 +7,8 @@ def getList(Size):
     return getList
 
 def remDupl(list):
-    ulist = set(list)       # set() function is used to remove duplicates from the list and store as a Set
-    return ulist
+    return set(list)       # set() function is used to remove duplicates from the list and store as a Set
+
 
 listSize = int(input("Enter your list size: "))
 genList = getList(listSize)
