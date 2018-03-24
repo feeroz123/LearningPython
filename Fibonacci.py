@@ -5,7 +5,7 @@ def getfib(num):
     b = 1
     print(a)
     print(b)
-    for i in range (0,num):
+    for i in range (0,num-2):
         c = a + b
         print(c)
         a = b
