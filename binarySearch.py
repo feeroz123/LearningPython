@@ -11,7 +11,7 @@ def search (inputList, searchValue):
             if midValue == searchValue or inputList[startIndex] == searchValue or inputList[endIndex] == searchValue:
                 return True
                 break
-            if midValue == 0 or midValue == startIndex or midValue == endIndex:
+            if midValue == 0 or midIndex == startIndex or midIndex == endIndex:
                 return False
                 break
             elif midValue > searchValue:
