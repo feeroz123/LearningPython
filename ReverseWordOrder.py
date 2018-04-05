@@ -6,4 +6,4 @@ ustring = input("Enter a sentence: ")
 splitString = ustring.split(" ")        # Separate the words by " " character
 splitString.reverse()                   # Perform reverse operation on the string
 
-print(" ".join(splitString))            # Stich/Merge the words with " " character in between them
+print(" ".join(splitString))            # Stitch/Merge the words with " " character in between them
