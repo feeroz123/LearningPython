@@ -1,13 +1,15 @@
 # Tic Tac Toe game for two players
-
-import os
 import random
 
-board = ['#',' ',' ',' ',' ',' ',' ',' ',' ',' ']
-def draw_board():
-    #board[location] = mark
-    os.system('cls||clear')
+board = [' ']*10
+pattern_x = []
+pattern_o = []
+valid_locations = [1,2,3,4,5,6,7,8,9]
+success_pattern = [[1,2,3],[4,5,6],[7,8,9],[1,4,7],[2,5,8],[3,6,9],[3,5,7],[1,5,9]]
 
+
+
+def draw_board():
     print('\n-------------------')
     print(f'|  {board[7]}  |  {board[8]}  |  {board[9]}  |')
     print('-------------------')
@@ -45,10 +47,45 @@ def mark_board(input_location,marker):
     board[input_location] = marker
     draw_board()
 
-def check_winner(player, marker):
-    pass
+def game_action(player, marker):
 
+    print('Valid locations: ', valid_locations)
+    player_input_location = int(input(f'{player} : Enter your mark location \n(press 0 to exit game) ----> '))
 
+    # Check if 0 is entered then Exit the game
+    if player_input_location == 0:
+        print('Game Exited')
+        exit(0)
+    # Validating input location
+    elif player_input_location not in valid_locations:
+        print('Invalid Input ! Your turn is cancelled.')
+        return
+    else:
+        # Update the board for the player
+        print('Player Input Location = ', player_input_location)
+        mark_board(player_input_location, marker)
+        valid_locations.remove(player_input_location)
+        check_winner(player)
+
+def check_winner(player):
+
+    for counter, value in enumerate(board):
+        if value == 'x':
+            pattern_x.append(counter)
+        elif value == 'o':
+            pattern_o.append(counter)
+
+    if pattern_x in success_pattern:
+        print(f'{player} WINS !!!')
+        print(pattern_x)
+        print("Game Over.")
+        exit(0)
+
+    elif pattern_o in success_pattern:
+        print(f'{player} WINS !!!')
+        print(pattern_o)
+        print("Game Over.")
+        exit(0)
 
 
 
@@ -57,27 +94,26 @@ print('=========================================')
 
 # Choose player markers
 player1_mark, player2_mark = player_marker()
-print('Player 1 marker is : ' + player1_mark + ' , and Player 2 marker is: ' + player2_mark)
+print('\nPlayer 1 marker is : ' + player1_mark + ' , and Player 2 marker is: ' + player2_mark)
 
 # Perform toss
-print('\n Lets do the toss !')
+print('\n      Lets do the toss !\n')
 if toss():
     winner = 'Player 1'
-    marker1 = player1_mark
+    winner_marker = player1_mark
     loser = 'Player 2'
-    marker2 = player2_mark
+    loser_marker = player2_mark
 else:
     winner = 'Player 2'
-    marker1 = player2_mark
+    winner_marker = player2_mark
     loser = 'Player 1'
-    marker2 = player1_mark
-
-
+    loser_marker = player1_mark
 
 
 # Begin the game
-initiate_trigger = input("\nLet's begin the game now!! Good luck to both players! \n Press Y to continue .....")
+initiate_trigger = input("\nLet's begin the game now!! Good luck to both players! \n\nEnter Y to continue .....")
 
+# Check for the game to continue
 if not initiate_trigger.lower() == 'y':
     print("Game is exited.")
     exit(0)
@@ -85,34 +121,8 @@ else:
     draw_board()
 
 
-valid_locations=['',1,2,3,4,5,6,7,8,9]
+while len(valid_locations) > 0:
+        game_action(winner, winner_marker)
+        game_action(loser, loser_marker)
 
-while len(valid_locations) > 1:
-
-    # Winner player flow
-    print('Available locations: ', valid_locations[1:])
-    player_input_location = int(input(f'{winner} : Enter your mark location (press 0 to exit game) --> '))
-
-    if player_input_location == 0:
-        exit(0)
-    elif player_input_location not in valid_locations:
-        print('Invalid Input !')
-        continue
-    # Update the board for Winner player
-    mark_board(player_input_location, marker1)
-    valid_locations.remove(player_input_location)
-
-    # Loser player flow
-    print('Available locations: ', valid_locations[1:])
-    player_input_location = int(input(f'{loser} : Enter your mark location (press 0 to exit game) --> '))
-
-    if player_input_location == 0:
-        exit(0)
-    elif player_input_location not in valid_locations:
-        print('Invalid Input !')
-        continue
-
-    # Update the board for Loser player
-    mark_board(player_input_location, marker2)
-    valid_locations.remove(player_input_location)
-
+print("No Winner. Game is Over")
