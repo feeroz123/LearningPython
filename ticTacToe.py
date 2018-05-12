@@ -1,4 +1,5 @@
 # Tic Tac Toe game for two players
+from IPython.display import clear_output
 import random
 
 board = [' ']*10
@@ -10,6 +11,7 @@ success_pattern = [[1,2,3],[4,5,6],[7,8,9],[1,4,7],[2,5,8],[3,6,9],[3,5,7],[1,5,
 
 
 def draw_board():
+    clear_output()
     print('\n-------------------')
     print(f'|  {board[7]}  |  {board[8]}  |  {board[9]}  |')
     print('-------------------')
@@ -32,10 +34,10 @@ def player_marker():
     return player1_marker, player2_marker
 
 def toss():
-    result = (random.randrange(1,100))%2 == 0
+    result = random.randint(0,1)
 
     print('****************************')
-    if result:
+    if result == 0:
         print('* Player 1 wins the toss ! *')
     else:
         print('* Player 2 wins the toss ! *')
