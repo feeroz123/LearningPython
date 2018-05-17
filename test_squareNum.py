@@ -3,7 +3,7 @@ import sampleTest
 
 class test_sampleTest(unittest.TestCase):
 
-    def performTest(self):
+    def test_performTest(self):
         num = 5
         result = sampleTest.squareNum(num)
         self.assertEqual(result, 25)
