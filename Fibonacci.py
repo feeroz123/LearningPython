@@ -5,7 +5,7 @@ def getfib(num):
     b = 1
     print(a)
     print(b)
-    for i in range (2,num):         # It starts from 2 as two members are already printed above
+    for i in range(2, num):         # It starts from 2 as two members are already printed above
         c = a + b
         print(c)
         a = b

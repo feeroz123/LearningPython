@@ -6,7 +6,7 @@ while True:
         print("Type mismatch. Try again.")
         continue
     except:
-        print("Error occured. Try again.")
+        print("Error occurred. Try again.")
         continue
     else:
         print(f"Square of {num} is {num*num}")
@@ -14,4 +14,4 @@ while True:
     finally:
         print("All done")
 
-print ("Task successful")
+print("Task successful")

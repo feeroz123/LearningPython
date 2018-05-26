@@ -75,6 +75,7 @@ def get_card_issuer(card_number):
     else:
         return "Unknown"
 
+
 def validate_card(card_number):
     # Check if card number is less than 16 digits
     while len(card_number) != 16:
