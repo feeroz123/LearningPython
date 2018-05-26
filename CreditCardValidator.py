@@ -116,18 +116,3 @@ card_number = get_card_number()
 print(" Issuer = ", get_card_issuer(card_number))
 validate_card(card_number)
 print("\nCard Validation completed.")
-
-
-# Some examples of VALID card numbers
-##  Visa
-### 4916525244697752
-### 4532857518460433
-### 4556567022681488
-### 4716925167591283
-### 4539149620158748
-##  Mastercard
-### 5210862957022039
-### 5148518132778468
-### 5109362255758222
-### 5135724920606599
-### 5490343858073992
