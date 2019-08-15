@@ -9,14 +9,14 @@ class Account:
 
     def deposit(self, amount):
         self.balance = self.balance + amount
-        print("Amount deposited in account")
+        print("Amount deposited in account:", amount)
 
     def withdraw(self, amount):
         if self.balance < amount:
             print("Insufficient balance")
         else:
             self.balance = self.balance - amount
-            print("Amount withdrawn from account")
+            print("Amount withdrawn from account:", amount)
 
     def get_balance(self):
         print("Account Balance = {}".format(self.balance))
@@ -27,7 +27,8 @@ name = input("Enter your name: ")
 balance = float(input("Enter initial balance: "))
 
 owner_account = Account(name, balance)
-print(owner_account)
+print(owner_account)    # Calling the __str__ function when the object is used in 'print'
+
 
 owner_account.deposit(100)
 owner_account.deposit(200)
