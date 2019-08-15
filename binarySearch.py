@@ -1,4 +1,4 @@
-#Write a function that takes an ordered list of numbers (a list where the elements are in order from smallest to largest) and another number.
+#Write a function that takes an sorted list of numbers (a list where the elements are in order from smallest to largest) and another number.
 # The function decides whether or not the given number is inside the list and returns (then prints) an appropriate boolean.
 
 def search (inputList, searchValue):
@@ -6,7 +6,7 @@ def search (inputList, searchValue):
     endIndex = len(inputList) - 1
 
     while True:
-        midIndex = int((startIndex+endIndex)/2)
+        midIndex = int((startIndex + endIndex)/2)
         midValue = inputList[midIndex]
 
         if midValue == searchValue or inputList[startIndex] == searchValue or inputList[endIndex] == searchValue:
