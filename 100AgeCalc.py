@@ -8,4 +8,4 @@ age = int(input("Enter your age: "))
 yr = int(datetime.datetime.today().strftime("%Y"))
 newyr = (100 - age) + yr
 
-print("Hello", name, ", you will turn 100 yrs old in the year", newyr)
+print("Hello", name, ", you will turn 100 yrs old in the year ", newyr)
