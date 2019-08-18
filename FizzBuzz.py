@@ -4,7 +4,7 @@
 #   b) print "Buzz" if the number is divisible by 5
 #   c) print "FizzBuzz" if the number is divisible by 15
 
-num_list = range(51)        # Excludes 51, goes only till 50
+num_list = range(1, 51)        # Excludes 51, goes only till 50
 for num in num_list:
     if num % 15 == 0:
         print("FizzBuzz")
