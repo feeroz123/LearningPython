@@ -10,7 +10,7 @@ def summer_69(arr):
             flag = False
         elif i == 9:
             flag = True
-        elif flag == True:
+        elif flag:  # Checking if the flag is True (by default)
             sum += i
 
     print(sum)
