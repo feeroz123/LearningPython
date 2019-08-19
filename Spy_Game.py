@@ -1,4 +1,4 @@
-# SPY GAME: Write a function that takes in a list of integers and returns True if it contains 007 in order
+# SPY GAME: Write a function that takes in a list of integers and returns True if it contains 0, 0, 7 in the same consecutive order
 
 def spy_game(nums):
     count_0 = 0
