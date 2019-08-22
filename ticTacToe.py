@@ -65,30 +65,23 @@ def game_action(player, marker):
         print('Player Input Location = ', player_input_location)
         mark_board(player_input_location, marker)
         valid_locations.remove(player_input_location)
-        check_winner(player)
+        check_winner(player, marker)
 
 
-def check_winner(player):
-    for counter, value in enumerate(board):
-        if value == 'X' and counter not in pattern_x:
-            pattern_x.append(counter)
-            print("Pattern X :", pattern_x)
-        elif value == 'O' and counter not in pattern_o:
-            pattern_o.append(counter)
-            print("Pattern O :", pattern_o)
-
-    if pattern_x in success_pattern:
-        print(f'{player} WINS !!!')
-        print(pattern_x)
-        print("Game Over.")
-        exit(0)
-
-    elif pattern_o in success_pattern:
-        print(f'{player} WINS !!!')
-        print(pattern_o)
-        print("Game Over.")
-        exit(0)
-
+def check_winner(player, marker):
+    if len(valid_locations) > 0 and \
+            ((board[1] == board[2] == board[3] == marker) or
+            (board[4] == board[5] == board[6] == marker) or
+            (board[7] == board[8] == board[9] == marker) or
+            (board[1] == board[4] == board[7] == marker) or
+            (board[2] == board[5] == board[8] == marker) or
+            (board[3] == board[6] == board[9] == marker) or
+            (board[1] == board[5] == board[9] == marker) or
+            (board[3] == board[5] == board[7] == marker)):
+            print("************************")
+            print(f"{player} HAS WON !!")
+            print("************************")
+            exit(0)
 
 print('\nWelcome to the TIC-TAC-TOE game !')
 print('=========================================')
