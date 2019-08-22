@@ -6,8 +6,7 @@ board = [' ']*10
 pattern_x = []
 pattern_o = []
 valid_locations = [1,2,3,4,5,6,7,8,9]
-success_pattern = [[1,2,3],[4,5,6],[7,8,9],[1,4,7],[2,5,8],[3,6,9],[3,5,7],[1,5,9]]
-
+success_pattern = [[1,2,3], [4,5,6], [7,8,9], [1,4,7], [2,5,8], [3,6,9], [3,5,7], [1,5,9]]
 
 
 def draw_board():
@@ -45,12 +44,11 @@ def toss():
 
     return result
 
-def mark_board(input_location,marker):
+def mark_board(input_location, marker):
     board[input_location] = marker
     draw_board()
 
 def game_action(player, marker):
-
     print('Valid locations: ', valid_locations)
     player_input_location = int(input(f'{player} : Enter your mark location \n(press 0 to exit game) ----> '))
 
@@ -69,13 +67,15 @@ def game_action(player, marker):
         valid_locations.remove(player_input_location)
         check_winner(player)
 
-def check_winner(player):
 
+def check_winner(player):
     for counter, value in enumerate(board):
-        if value == 'x':
+        if value == 'X' and counter not in pattern_x:
             pattern_x.append(counter)
-        elif value == 'o':
+            print("Pattern X :", pattern_x)
+        elif value == 'O' and counter not in pattern_o:
             pattern_o.append(counter)
+            print("Pattern O :", pattern_o)
 
     if pattern_x in success_pattern:
         print(f'{player} WINS !!!')
@@ -90,7 +90,6 @@ def check_winner(player):
         exit(0)
 
 
-
 print('\nWelcome to the TIC-TAC-TOE game !')
 print('=========================================')
 
@@ -100,7 +99,7 @@ print('\nPlayer 1 marker is : ' + player1_mark + ' , and Player 2 marker is: ' +
 
 # Perform toss
 print('\n      Lets do the toss !\n')
-if toss():
+if toss() == 0:
     winner = 'Player 1'
     winner_marker = player1_mark
     loser = 'Player 2'
