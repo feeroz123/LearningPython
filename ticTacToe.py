@@ -1,12 +1,14 @@
 # Tic Tac Toe game for two players
+from typing import List
+
 from IPython.display import clear_output
 import random
 
-board = [' ']*10
+board = [' '] * 10
 pattern_x = []
 pattern_o = []
-valid_locations = [1,2,3,4,5,6,7,8,9]
-success_pattern = [[1,2,3], [4,5,6], [7,8,9], [1,4,7], [2,5,8], [3,6,9], [3,5,7], [1,5,9]]
+valid_locations = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+success_pattern = [[1, 2, 3], [4, 5, 6], [7, 8, 9], [1, 4, 7], [2, 5, 8], [3, 6, 9], [3, 5, 7], [1, 5, 9]]
 
 
 def draw_board():
@@ -19,8 +21,9 @@ def draw_board():
     print(f'|  {board[1]}  |  {board[2]}  |  {board[3]}  |')
     print('-------------------\n')
 
+
 def player_marker():
-    markers = ['x','o']
+    markers = ['x', 'o']
     player1_marker = ''
     while player1_marker.lower() not in markers:
         player1_marker = (input('Player 1 - Choose your marker, X or O : ')).upper()
@@ -32,8 +35,9 @@ def player_marker():
 
     return player1_marker, player2_marker
 
+
 def toss():
-    result = random.randint(0,1)
+    result = random.randint(0, 1)
 
     print('****************************')
     if result == 0:
@@ -44,12 +48,14 @@ def toss():
 
     return result
 
+
 def mark_board(input_location, marker):
     board[input_location] = marker
     draw_board()
 
+
 def game_action(player, marker):
-    print('Valid locations: ', valid_locations)
+    print('Available valid locations: ', valid_locations)
     player_input_location = int(input(f'{player} : Enter your mark location \n(press 0 to exit game) ----> '))
 
     # Check if 0 is entered then Exit the game
@@ -69,8 +75,7 @@ def game_action(player, marker):
 
 
 def check_winner(player, marker):
-    if len(valid_locations) > 0 and \
-            ((board[1] == board[2] == board[3] == marker) or
+    if ((board[1] == board[2] == board[3] == marker) or
             (board[4] == board[5] == board[6] == marker) or
             (board[7] == board[8] == board[9] == marker) or
             (board[1] == board[4] == board[7] == marker) or
@@ -78,10 +83,16 @@ def check_winner(player, marker):
             (board[3] == board[6] == board[9] == marker) or
             (board[1] == board[5] == board[9] == marker) or
             (board[3] == board[5] == board[7] == marker)):
-            print("************************")
-            print(f"{player} HAS WON !!")
-            print("************************")
-            exit(0)
+        print("************************")
+        print(f"{player} HAS WON !!")
+        print("************************")
+        exit(0)
+    elif len(valid_locations) == 1:
+        print("************************")
+        print("GAME TIED !! NO WINNER")
+        print("************************")
+        exit(0)
+
 
 print('\nWelcome to the TIC-TAC-TOE game !')
 print('=========================================')
@@ -103,7 +114,6 @@ else:
     loser = 'Player 1'
     loser_marker = player1_mark
 
-
 # Begin the game
 initiate_trigger = input("\nLet's begin the game now!! Good luck to both players! \n\nEnter Y to continue .....")
 
@@ -114,9 +124,8 @@ if not initiate_trigger.lower() == 'y':
 else:
     draw_board()
 
-
 while len(valid_locations) > 0:
-        game_action(winner, winner_marker)
-        game_action(loser, loser_marker)
+    game_action(winner, winner_marker)
+    game_action(loser, loser_marker)
 
 print("No Winner. Game is Over")
