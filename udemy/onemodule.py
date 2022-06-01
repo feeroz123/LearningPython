@@ -1,10 +1,10 @@
 import twomodule
-import mypackage.threemodule
+import LearningPython.udemy.mypackage.threemodule
 
 print('I am one module')
 
 twomodule.two_method()
-mypackage.threemodule.three_method()
+LearningPython.udemy.mypackage.threemodule.three_method()
 
 if __name__ == "__main__":
     print('Running the one module directly')
